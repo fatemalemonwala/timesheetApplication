@@ -1,0 +1,13 @@
+<ul>
+{{#each data}}
+  <li>Week of {{this.weekStartDate}}<br>
+	  Total Hours : {{this.totalHours}}<br>
+	  Total Pay : ${{this.totalPay}}<br>
+  </li>
+  <hr>
+{{/each}}
+</ul>
+<br>
+<a href='/timesheet/{{this.uname}}'>View Timesheets</a>
+<hr>
+<a href='/login'>Sign Out</a>

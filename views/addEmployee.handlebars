@@ -1,0 +1,18 @@
+{{#if error}}
+<h3><font color="red">{{error}}</font></h3>
+{{/if}}
+<form method='POST' action='/saveemployee'>
+<input type="hidden" name="id" value="{{this._id}}" >
+First Name : <input type="text" name="firstname"><br>
+Last Name : <input type="text" name="lastname"><br>
+Username : <input type="text" name="username"><br>
+Temp Password : <input type="password" name="psw"><br>
+Team : <input type="text" name="team"><br>
+Pay Rate : $<input type="text" name="payrate"><br>
+Overtime Pay Rate : $<input type="text" name="overtimepayrate"><br>
+<input type="submit" value="Add Employee"><br>
+</form>
+<hr>
+<a href='/employee/{{uname}}'>Employee List</a>
+<hr>
+<a href='/login'>Sign Out</a>

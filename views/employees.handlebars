@@ -1,0 +1,13 @@
+{{#each data}}
+<ul>
+    <li>Name: {{this.firstName}} {{this.lastName}}, Team : {{this.team}} : 
+	<a href="/approvetimesheet/{{this.username}}">Time Sheet</a></li>
+</ul>
+{{/each}}
+<br>
+<a href='/addemployee/{{uname}}'><button>Add Employee</button></a>
+<hr>
+<a href='/timesheet/{{uname}}'>My Timesheet</a>
+<hr>
+<a href='/login'>Sign Out</a>
+ 

@@ -1,0 +1,33 @@
+{{#each data}}
+<hr>
+<form method="POST" action="/approve"> 
+
+<table>
+<tr>
+{{#each this.dateStringArr}}
+   <th>{{this}}</th>
+{{/each}}
+ </tr>
+ <tr>
+   <th>Monday </th>
+   <th>Tuesday</th>
+   <th>Wednesday</th>
+   <th>Thursday</th>
+   <th>Friday</th>
+ </tr>
+ <tr>
+ {{#each this.hours}}
+   <td><input type='text' value='{{this}}' readonly></td>
+ {{/each}}
+ </tr>
+</table>
+
+<input type="submit" value="Approve">
+<input type="hidden" name="id" value="{{this._id}}" >
+</form>
+{{/each}}
+<hr>
+<a href='/employees'>Employee List</a>
+<hr>
+<a href='/login'>Sign Out</a>
+ 

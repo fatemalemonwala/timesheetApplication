@@ -1,0 +1,62 @@
+<p>Name : {{data.firstName}} {{data.lastName}}</p>
+<p>Team : {{data.team}}</p>
+<p><b><a href='/payslips/{{data.uname}}'>Pay Slips</a></b></p>
+<br><hr>
+
+<form method="POST" id="timeform" action="/submitsheet"></form>
+
+<table>
+ <tr>
+{{#each data.dates}}
+   <th>{{this}}</th>
+{{/each}}
+ </tr>
+ <tr>
+   <th>Monday </th>
+   <th>Tuesday</th>
+   <th>Wednesday</th>
+   <th>Thursday</th>
+   <th>Friday</th>
+ </tr>
+ {{#if data.approved}}
+ {{#each data.hours}}
+ <td><input type='text' value='{{this}}' readonly></td>
+ {{/each}}
+ </table>
+ {{else}}
+ <tr>
+   <td><input type='text' name='monHours' value='{{data.hours.[0]}}' form='timeform'></td>
+   <td><input type='text' name='tueHours' value='{{data.hours.[1]}}' form='timeform'></td>
+   <td><input type='text' name='wedHours' value='{{data.hours.[2]}}' form='timeform'></td>
+   <td><input type='text' name='thuHours' value='{{data.hours.[3]}}' form='timeform'></td>
+   <td><input type='text' name='friHours' value='{{data.hours.[4]}}' form='timeform'></td>
+ </tr>
+
+ 
+<input type='hidden' name='date' value='{{data.date}}' form='timeform'>
+<input type='hidden' name='uname' value='{{data.uname}}' form='timeform'>
+</table>
+<button type='submit' form='timeform'>Submit</button>
+ {{/if}}
+
+<br><hr>
+<form method="POST" action="/prevweek">
+	<input type="hidden" name="datepw" value="{{data.date}}">
+	<input type="hidden" name="unamepw" value="{{data.uname}}">
+    <button type="submit">Prev Week</button>   
+</form>
+<form method="POST" action="/nextweek">
+	<input type="hidden" name="datenw" value="{{data.date}}">
+	<input type="hidden" name="unamenw" value="{{data.uname}}">
+    <button type="submit">Next Week</button>   
+</form>
+{{#if employee.access}}
+<a href='/employees/{{data.uname}}'>Employee List</a>
+<hr>
+{{/if}}
+<hr>
+<a href='/login'>Sign Out</a>
+
+
+
+				
